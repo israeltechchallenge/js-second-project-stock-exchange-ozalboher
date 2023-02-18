@@ -4,6 +4,8 @@ const ul = document.querySelector("ul");
 const div = document.querySelector("div");
 let isPrev = false;
 
+
+
 function deletePrevList() {
   const allLinks = document.querySelectorAll("li");
   ul.innerHTML = "";
@@ -53,7 +55,6 @@ function displayList(data, i = 0) {
       ul.appendChild(li);
     }
   });
-
   isPrev = true;
 }
 
@@ -68,6 +69,7 @@ async function getSearchResults(userInput) {
       `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/search?query=${userInput}&amp;limit=10&amp;exchange=NASDAQ`
     );
     const data = await response.json();
+    console.log('hmmmmm:',data);
     removeProgressBar();
     if (isPrev === false) displayList(data);
     else {
@@ -87,3 +89,5 @@ userInput.addEventListener("keyup", (e) => {
 searchBtn.addEventListener("click", () => {
   getSearchResults(userInput.value);
 });
+
+

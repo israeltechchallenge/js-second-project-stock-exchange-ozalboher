@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company Info</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins&family=Tourney:ital,wght@0,100;1,200;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.min.js"></script>
+    <script defer src="company.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="company.css" />
+  </head>
+  <body>
+    <main>
+      <div class="company-section">
+        <div class="header">
+          <div class="loader-bar move"></div>
+          <div id="arrow-back">
+            <a href="index.html"
+              ><i class="fa-solid fa-arrow-left fa-2x"></i
+            ></a>
+          </div>
+          <img class="company-logo" src="" alt="" />
+          <h1 class="company-name"></h1>
+          <a class="company-website" href=""></a>
+        </div>
+        <div class="stock-price-sec">
+          <h2 class="stock-price"></h2>
+          <span class="percentage"></span>
+        </div>
+        <p class="company-desc"></p>
+        <div>
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
