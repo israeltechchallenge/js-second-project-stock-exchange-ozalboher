@@ -108,6 +108,7 @@ function progressBar(width = 0) {
   }
 
   async function getCompanyProfile(symbol) {
+    console.log(symbol);
     try {
       const response = await fetch(
         `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/${symbol}`
