@@ -4,9 +4,29 @@ const ul = document.querySelector("ul");
 const div = document.querySelector("div");
 let debounceTimer;
 let isPrev = false;
+let indexUrl;
 
 const baseUrl =
   "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/";
+
+// Add Query Parameter
+
+function addOrUpdateURLParam(key, value) {
+  const searchParams = new URLSearchParams(window.location.search);
+  searchParams.set(key, value);
+  const newRelativePathQuery =
+    window.location.pathname + "?" + searchParams.toString();
+  history.pushState(null, null, newRelativePathQuery);
+}
+// Get Query
+
+const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
+
+if (params.query !== undefined) {
+  main(params.query);
+}
+// Debounce
 
 const debounce = (e) => {
   clearTimeout(debounceTimer);
@@ -14,10 +34,13 @@ const debounce = (e) => {
 
   debounceTimer = setTimeout(main, 1000, e);
 };
+// Delete List
 
 function deletePrevList() {
   ul.innerHTML = "";
 }
+
+// Progress Bar functions
 
 function progressBar(value, width = 0) {
   let elem = document.querySelector(".loader-bar");
@@ -114,8 +137,10 @@ userInput.addEventListener("input", (e) => {
 });
 
 searchBtn.addEventListener("click", () => {
+  addOrUpdateURLParam("query", userInput.value);
   main(userInput.value);
 });
+
 
 //main
 async function main(userInput) {
@@ -135,6 +160,9 @@ async function main(userInput) {
   removeProgressBar(); // Clear progress bar
   deletePrevList(); // Delete Prev List
   displayList(searchResults, resultsLogo); // Display results with logo
+  
+  indexUrl = window.location.href.toString();  
 }
 
-console.log(window.location.href);
+
+
