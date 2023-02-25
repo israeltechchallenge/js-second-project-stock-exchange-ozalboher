@@ -5,14 +5,12 @@ async function getMarqueeData() {
   try {
     const response = await fetch(marqueeURL);
     const data = await response.json();
-    for (let i = 0; i < 10; i++) {
+    console.log(data)
+    for (let i = 0; i < 60; i++) {
       const company = data[i];
       displayMarqueeData(company);
     }
-    for (let i = 10; i < 30; i++) {
-      const company = data[i];
-      displayMarqueeData(company);
-    }
+   
   } catch (error) {
     console.log(error);
   }
@@ -27,3 +25,6 @@ function displayMarqueeData(company) {
 }
 
 getMarqueeData();
+
+
+

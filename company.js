@@ -1,37 +1,9 @@
-function progressBar(width = 0) {
-    let elem = document.querySelector(".loader-bar");
-    elem.classList.add("move");
-    let id = setInterval(frame, 1);
-    function frame() {
-      if (width >= 70) {
-        clearInterval(id);
-      } else {
-        width++;
-        elem.style.width = width + "%";
-      }
-    }
-  }
-  function removeProgressBar(width = 70) {
-    let elem = document.querySelector(".loader-bar");
-    elem.classList.add("move");
-    let id = setInterval(frame, 1);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-      } else {
-        width++;
-        elem.style.width = width + "%";
-      }
-    }
-    setTimeout(() => {
-      elem.classList.remove("move");
-    }, 300);
-  }
+
 
   async function getStockHistory(symbol) {
     try {
       const response = await fetch(
-        `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/historical-price-full/${symbol}?serietype=line`
+        `${baseUrl}historical-price-full/${symbol}?serietype=line`
       );
       const data = await response.json();
       return data;
@@ -111,7 +83,7 @@ function progressBar(width = 0) {
     console.log(symbol);
     try {
       const response = await fetch(
-        `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/${symbol}`
+        `${baseUrl}company/profile/${symbol}`
       );
       const data = await response.json();
       console.log(data);
@@ -122,15 +94,19 @@ function progressBar(width = 0) {
   }
 
   // Get Query
-  const urlSearchParams = new URLSearchParams(window.location.search);
-  const params = Object.fromEntries(urlSearchParams.entries());
+
+  const companyUrlSearchParams = new URLSearchParams(window.location.search);
+  const companyParams = Object.fromEntries(companyUrlSearchParams.entries());
+  
 
   //Main
   (async () => {
-    progressBar();
-    const companyProfile = await getCompanyProfile(params.symbol);
+    progressBar(40);
+    const companyProfile = await getCompanyProfile(companyParams.symbol);
     displayCompany(companyProfile);
-    const stockHistory = await getStockHistory(params.symbol);
+    progressBar(70, 40);
+    const stockHistory = await getStockHistory(companyParams.symbol);
     displayStockHistory(stockHistory);
+    progressBar(100, 70);
     removeProgressBar();
   })();
