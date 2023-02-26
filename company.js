@@ -1,5 +1,5 @@
-arrowBack = document.querySelector(".go-back");
-console.log(indexUrl);
+/* arrowBack = document.querySelector(".go-back"); */
+/* console.log(indexUrl); */
 /* arrowBack.href = indexUrl; */
 
 async function getStockHistory(symbol) {
@@ -82,11 +82,9 @@ function displayCompany(data) {
 }
 
 async function getCompanyProfile(symbol) {
-  console.log(symbol);
   try {
     const response = await fetch(`${baseUrl}company/profile/${symbol}`);
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error(error);

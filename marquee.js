@@ -5,7 +5,6 @@ async function getMarqueeData() {
   try {
     const response = await fetch(marqueeURL);
     const data = await response.json();
-    console.log(data)
     for (let i = 0; i < 60; i++) {
       const company = data[i];
       displayMarqueeData(company);

@@ -62,10 +62,8 @@ function removeProgressBar() {
   }, 300);
 }
 function displayList(data, logos, i = 0) {
-  console.log(data);
   data.forEach((element) => {
     if (i < 10) {
-      console.log(element);
       const li = document.createElement("li");
       const a = document.createElement("a");
       const img = document.createElement("img");
@@ -100,7 +98,6 @@ async function getResultsLogo(searchResults) {
     percent: [],
   };
   let i = 0;
-  console.log(searchResults);
   for (let i = 0; i < 10; i++) {
     try {
       const response = await fetch(
@@ -116,8 +113,6 @@ async function getResultsLogo(searchResults) {
       console.error(error);
     }
   }
-  console.log(searchResults[0]);
-  console.log(arr.length);
   return arr;
 }
 
@@ -161,7 +156,7 @@ async function main(userInput) {
   deletePrevList(); // Delete Prev List
   displayList(searchResults, resultsLogo); // Display results with logo
   
-  indexUrl = window.location.href.toString();  
+  /* indexUrl = window.location.href.toString();   */
 }
 
 
