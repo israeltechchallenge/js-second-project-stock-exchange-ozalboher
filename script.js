@@ -4,7 +4,7 @@ const ul = document.querySelector("ul");
 const div = document.querySelector("div");
 let debounceTimer;
 let isPrev = false;
-let indexUrl;
+
 
 const baseUrl =
   "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/";
@@ -18,10 +18,12 @@ function addOrUpdateURLParam(key, value) {
     window.location.pathname + "?" + searchParams.toString();
   history.pushState(null, null, newRelativePathQuery);
 }
-// Get Query
+// Get Query 
 
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
+
+// Pass Query Parameter to main function
 
 if (params.query !== undefined) {
   main(params.query);
@@ -136,7 +138,6 @@ searchBtn.addEventListener("click", () => {
   main(userInput.value);
 });
 
-
 //main
 async function main(userInput) {
   if (userInput === "") {
@@ -156,7 +157,7 @@ async function main(userInput) {
   deletePrevList(); // Delete Prev List
   displayList(searchResults, resultsLogo); // Display results with logo
   
-  /* indexUrl = window.location.href.toString();   */
+  /* let indexUrl = window.location.href.toString();   */
 }
 
 
