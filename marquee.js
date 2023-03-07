@@ -1,8 +1,8 @@
 
 class MarqueeGenerator {
-  constructor(marqueeURL, marqueeElement) {
-    this.marqueeURL = marqueeURL;
+  constructor(marqueeElement) {
     this.marqueeElement = marqueeElement;
+    this.marqueeURL = `${baseUrl}stock/list`;
   }
 
   async getMarqueeData() {
@@ -17,23 +17,29 @@ class MarqueeGenerator {
   }
 
   displayMarqueeData(data) {
+    let marqueeText = document.createElement('p');
+    marqueeText.classList.add('marquee-text');
+    marqueeText.classList.add('colors');
+    
     for (let i = 0; i < 60; i++) {
     const company = data[i];
     const symbol = company.symbol;
     const price = company.price;
     const textElement = document.createElement("span");
     textElement.textContent = ` ${symbol} ${price} `;
-    this.marqueeElement.appendChild(textElement);
+    marqueeText.appendChild(textElement);
+    this.marqueeElement.appendChild(marqueeText);
     }
+  }
+
+  async start(){
+    this.getMarqueeData().then(data => this.displayMarqueeData(data));
   }
 }
 
-// main
-const marqueeURL = `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/` + "stock/list";
-const marqueeElement = document.querySelector(".marquee-text");
 
-(async () => {
-const marqueeInstance = new MarqueeGenerator(marqueeURL, marqueeElement);
-const marqueeData = await marqueeInstance.getMarqueeData();
-marqueeInstance.displayMarqueeData(marqueeData);
-})();
+
+
+
+
+
