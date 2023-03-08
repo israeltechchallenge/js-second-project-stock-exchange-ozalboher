@@ -1,0 +1,52 @@
+
+.company-section{
+    background-color: rgba(255, 255, 255, 0.635);
+    width: 80rem;
+    margin: 0 auto;
+    margin-top: 20rem;
+    text-align: center;
+    box-shadow: 4px 4px 8px 6px rgba(0, 0, 0,0.3);
+    border: 2rem solid #202124;
+    border-radius: 0.8rem;
+}
+#arrow-back{
+    display: flex;
+    margin-top: 0.8rem;
+    margin-left: 1.2rem;
+    text-shadow:8px 4px 30px rgba(0, 0, 0,0.7);
+}
+
+
+.company-name{
+    margin-top: 1.8rem;
+    text-shadow:8px 4px 20px rgba(0, 0, 0,0.7);
+}
+.stock-price-sec{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow:8px 4px 20px rgba(0, 0, 0,0.7);
+}
+h2{
+    font-size: 1.7rem;
+}
+.percentage{
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+.red{
+    color: rgb(220, 0, 0);
+    text-shadow: 1px 1px 10px rgba(0, 0, 0,0.7);
+}
+.green{
+    color: rgb(70, 222, 62);
+    text-shadow: 1px 1px 10px rgba(0, 0, 0,0.7);
+}
+p{
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;   
+    text-align: left; 
+    padding: 50px;
+}
+
+
